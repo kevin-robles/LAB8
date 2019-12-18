@@ -19,19 +19,18 @@ public class ControladorUsuario implements ActionListener{
   public ControladorUsuario(LoginForm pVista,Usuario pModelo){
     vista = pVista;
     modelo = pModelo;
-    UsuarioDAO dao = new UsuarioDAO();
+    dao = new UsuarioDAO();
     
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);
   }
   
   public void actionPerformed(ActionEvent e){
-    System.out.println(e.getActionCommand());
     switch(e.getActionCommand()){
-        case "Iniciar LogIn":
+        case "Iniciar login":
             logIn();
             break;
-        case "Cancelar LogIn":
+        case "Cancelar login":
             cerrarVentanaLogin();
             break;
         default:
@@ -49,7 +48,7 @@ public class ControladorUsuario implements ActionListener{
     
       if(usuarioActual != null){
         vista.setVisible(true);
-        JOptionPane.showMessageDialog(vista,"Bienvenido: "+modelo.getNombre());
+        JOptionPane.showMessageDialog(vista,"Bienvenido: "+usuarioActual.getNombre());
         vista.setVisible(true);
       }else{
         JOptionPane.showMessageDialog(vista, "El usuario indicado no existe");

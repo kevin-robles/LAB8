@@ -12,6 +12,8 @@ create table esquema.sala(
   capacidad int
 )
 
+insert into esquema.usuario values ('Kevin','123');
+
 create function esquema.validarUsuario(@nombre as varchar(100), @contraseña as varchar(100))
 returns int
 as 
@@ -25,7 +27,8 @@ begin
 return 0
 end
 
-select esquema.validarUsuario()
+
+select esquema.validarUsuario('Kevin','123');
 
 
 
