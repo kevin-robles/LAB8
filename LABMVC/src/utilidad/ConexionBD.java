@@ -1,5 +1,6 @@
 /**
- *
+ * Clase para conectarse a la base de datos
+ * 
  * @author Kevin Robles, Raquel Rojas
  * @version 1.0
  */
@@ -9,7 +10,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class ConexionBD {
   static Connection contacto = null;
-    
+  
+  /**
+   * Metodo para realizar la conexion con la base de datos
+   * 
+   * @return conexion con la base de datos
+   */  
   public static Connection getConexion(){        
     try{
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

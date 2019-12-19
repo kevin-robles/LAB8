@@ -1,16 +1,25 @@
 /**
- *
+ * Interfaz para realizar el acceso a la aplicacion
+ * 
  * @author kevin Robles, Raquel Rojas
  * @version 1.0
  */
 package vista;
 
 public class LoginForm extends javax.swing.JFrame {
-
+  
+  /**
+   * Metodo Constructor
+   */
   public LoginForm() {
     initComponents();
   }
   
+  /**
+   * Metodo para validar el acceso de los datos
+   * 
+   * @return true si los datos son correctos, false de lo contrario
+   */
   public boolean logInDatosCorrectos(){
     if (txtNombreUsuario.equals("") || txtContraseña.equals("")){
       return false;
@@ -18,10 +27,18 @@ public class LoginForm extends javax.swing.JFrame {
     return true;
   }
   
+  /**
+   * Metodo para abrir la ventana anterior
+   * 
+   * @param ventanaAnterior interfaz a abrir
+   */
   public void abrirVentanaAnterior(LoginForm ventanaAnterior){
     ventanaAnterior.setVisible(true);
   }
   
+  /**
+   * Metodo para salir de la aplicacion
+   */
   public void cancelarIniciarSesion(){
     System.exit(0);
   }

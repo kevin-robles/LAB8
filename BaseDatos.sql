@@ -9,7 +9,7 @@ create table esquema.usuario(
 create table esquema.sala(
   identificador varchar(50) primary key,
   ubicacion varchar(100),
-  capacidad int
+  capacidad int,
 )
 
 insert into esquema.usuario values ('Kevin','123');
@@ -28,7 +28,13 @@ return 0
 end
 
 
-select esquema.validarUsuario('Kevin','123');
-
+create procedure esquema.ingresarSala
+@identificador as varchar(50),
+@ubicacion as varchar(100),
+@capacidad as int
+as
+begin
+	insert into esquema.sala values(@identificador,@ubicacion,@capacidad);
+end
 
 

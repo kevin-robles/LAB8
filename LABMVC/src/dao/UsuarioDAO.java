@@ -1,5 +1,5 @@
 /**
- *
+ * Clase encargada de administrar los usuarios con la base de datos
  * 
  * @author Kevin Robles, Raquel Rojas
  * @version 1.0
@@ -14,6 +14,12 @@ import modelo.Usuario;
 import utilidad.ConexionBD;
 
 public class UsuarioDAO {
+  /**
+   * Metodo para comprobar con la base de datos la existencia del usuario
+   * 
+   * @param usuario objeto tipo Usuario que se verificará
+   * @return si el usuario es valido se retorna el mismo, sino se devulve usuario null
+   */  
   public Usuario iniciarSesion(Usuario usuario){
     try{
       String nombreUsuario = usuario.getNombre();
