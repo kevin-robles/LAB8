@@ -19,6 +19,13 @@ public class ControladorSala implements ActionListener{
   public SalaDAO dao;
   public Sala modelo;
   public RegistrarSala vista;
+  
+  /**
+   * Constructor para el objeto controlador de la sala
+   * 
+   * @param pVista interfaz a trabajar
+   * @param pModelo objeto tipo Sala
+   */
   public ControladorSala(RegistrarSala pVista , Sala pModelo){
     vista = pVista;
     modelo = pModelo;
@@ -56,7 +63,6 @@ public class ControladorSala implements ActionListener{
       String ubicacion = vista.txtCapacidad.getText();
       String identificador = vista.txtId.getText();
       boolean hayWifi = vista.checkWifi.isSelected();
-      System.out.println(hayWifi);
       Sala sala = new Sala(identificador, ubicacion, capacidad, area, nombre, hayWifi);
       Boolean bandera = dao.registrarSala(sala);
       if(bandera == true){
@@ -65,10 +71,9 @@ public class ControladorSala implements ActionListener{
       }else{
         JOptionPane.showMessageDialog(vista, "Error al ingresar la sala");
       }
-      
-      } else {
-        JOptionPane.showMessageDialog(null, "Error al ingresar los datos, compruebe los datos "
-            + "ingresados");
-      }
+    } else {
+      JOptionPane.showMessageDialog(null, "Error al ingresar los datos, compruebe los datos "
+          + "ingresados");
+    }
   }   
 }

@@ -29,7 +29,7 @@ public class RegistrarSala extends javax.swing.JFrame {
         txtArea.getText().equals("")){
       return false;
     }else{
-      try{
+      try{//valiadar que sean numeros
         int capacidad = Integer.parseInt(txtCapacidad.getText());
         int area = Integer.parseInt(txtArea.getText());
       }catch (NumberFormatException ex) {

@@ -12,6 +12,12 @@ import modelo.Sala;
 import utilidad.ConexionBD;
 
 public class SalaDAO {
+    /**
+     * Metodo para registrar una sala en la base de datos
+     * 
+     * @param sala objeto a registrar
+     * @return boolean para determinar si se realiza el registro con exito
+     */
   public boolean registrarSala(Sala sala){
     try{
       String nombre = sala.getNombre();
