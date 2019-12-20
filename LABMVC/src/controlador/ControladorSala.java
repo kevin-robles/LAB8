@@ -58,6 +58,7 @@ public class ControladorSala implements ActionListener{
         String identificador = vista.txtId.getText();
         boolean hayWifi = vista.checkWifi.isSelected();
         Sala sala = new Sala(identificador, ubicacion, capacidad, area, nombre, hayWifi);
+        System.out.println("hola");
         dao.registrarSala(sala);
       } else {
         System.out.println("No entro");
