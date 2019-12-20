@@ -12,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Sala;
-import modelo.Usuario;
-import vista.Menu;
 import vista.RegistrarSala;
 
 
@@ -38,11 +36,9 @@ public class ControladorSala implements ActionListener{
   public void actionPerformed(ActionEvent e){
     switch(e.getActionCommand()){
       case "Registrar Sala":
-        System.out.println("sipi");
         registrarSala();
         break;
       case "Regresar":
-        System.out.println("bye");
         break;
       default:
         break;
@@ -50,23 +46,26 @@ public class ControladorSala implements ActionListener{
   }
   
   public void registrarSala(){
-      if(vista.datosCorrectos() == true){
-        int capacidad = Integer.parseInt(vista.txtCapacidad.getText());
-        int area = Integer.parseInt(vista.txtArea.getText());
-        String nombre = vista.txtNombre.getText();
-        String ubicacion = vista.txtCapacidad.getText();
-        String identificador = vista.txtId.getText();
-        boolean hayWifi = vista.checkWifi.isSelected();
-        Sala sala = new Sala(identificador, ubicacion, capacidad, area, nombre, hayWifi);
-        dao.registrarSala(sala);
-      } else {
-        System.out.println("No entro");
-  
+    if(vista.datosCorrectos() == true){
+      int capacidad = Integer.parseInt(vista.txtCapacidad.getText());
+      int area = Integer.parseInt(vista.txtArea.getText());
+      String nombre = vista.txtNombre.getText();
+      String ubicacion = vista.txtCapacidad.getText();
+      String identificador = vista.txtId.getText();
+      boolean hayWifi = vista.checkWifi.isSelected();
+      
+      Sala sala = new Sala(identificador, ubicacion, capacidad, area, nombre, hayWifi);
+      Boolean bandera = dao.registrarSala(sala);
+      if(bandera == true){
+        JOptionPane.showMessageDialog(vista, "Sala ingresada correctamente");
+        vista.abrirVentanaAnterior(new RegistrarSala());
+      }else{
+        JOptionPane.showMessageDialog(vista, "Error al ingresar la sala");
       }
       
-  }
-
-
-
-    
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al ingresar los datos, compruebe los datos "
+            + "ingresados");
+      }
+  }   
 }

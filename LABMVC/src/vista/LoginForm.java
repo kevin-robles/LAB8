@@ -21,7 +21,7 @@ public class LoginForm extends javax.swing.JFrame {
    * @return true si los datos son correctos, false de lo contrario
    */
   public boolean logInDatosCorrectos(){
-    if (txtNombreUsuario.equals("") || txtContraseña.equals("")){
+    if (txtNombreUsuario.getText().equals("") || txtContraseña.getText().equals("")){
       return false;
     }
     return true;
@@ -34,6 +34,7 @@ public class LoginForm extends javax.swing.JFrame {
    */
   public void abrirVentanaAnterior(LoginForm ventanaAnterior){
     ventanaAnterior.setVisible(true);
+    ventanaAnterior.setLocationRelativeTo(null);
   }
   
   /**

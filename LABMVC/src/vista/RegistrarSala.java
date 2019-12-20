@@ -6,6 +6,9 @@
  */
 package vista;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class RegistrarSala extends javax.swing.JFrame {
   
   /**
@@ -21,8 +24,17 @@ public class RegistrarSala extends javax.swing.JFrame {
    * @return true si los datos son correctos, false de lo contrario
    */
   public boolean datosCorrectos(){
-    if (txtNombre.equals("") || txtUbicacion.equals("") || txtId.equals("") || txtCapacidad.equals("") || txtArea.equals("")){
+    if (txtNombre.getText().equals("") || txtUbicacion.getText().equals("") || 
+        txtId.getText().equals("") || txtCapacidad.getText().equals("") || 
+        txtArea.getText().equals("")){
       return false;
+    }else{
+      try{
+        int capacidad = Integer.parseInt(txtCapacidad.getText());
+        int area = Integer.parseInt(txtArea.getText());
+      }catch (NumberFormatException ex) {
+        return false;
+      }
     }
     return true;
   }
@@ -34,6 +46,7 @@ public class RegistrarSala extends javax.swing.JFrame {
    */
   public void abrirVentanaAnterior(RegistrarSala ventanaAnterior){
     ventanaAnterior.setVisible(true);
+    ventanaAnterior.setLocationRelativeTo(null);
   }
 
   /**

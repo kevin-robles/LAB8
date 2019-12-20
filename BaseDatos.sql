@@ -1,5 +1,6 @@
 create schema esquema;
 use LABMVC;
+create database LABMVC;
 
 create table esquema.usuario(
   nombre varchar(100) primary key,
@@ -10,6 +11,9 @@ create table esquema.sala(
   identificador varchar(50) primary key,
   ubicacion varchar(100),
   capacidad int,
+  areaMetros int,
+  hayWifi int,
+  nombre varchar(50)
 )
 
 insert into esquema.usuario values ('Kevin','123');
@@ -31,11 +35,15 @@ end
 create procedure esquema.ingresarSala
 @identificador as varchar(50),
 @ubicacion as varchar(100),
-@capacidad as int
+@capacidad as int,
+@area as int,
+@nombre as varchar(50),
+@wifi as int
 as
 begin
-	insert into esquema.sala values(@identificador,@ubicacion,@capacidad);
+	insert into esquema.sala values(@identificador,@ubicacion,@capacidad, @area, @wifi,@nombre);
 end
 
+execute esquema.ingresarSala @identificador = '?', @ubicacion = '?',@capacidad = '?',@area = '?',@nombre = '?', @wifi = '?';
 
-select * from esquema.usuario
+insert into esquema.sala values('01','Edificio Mira, segunda planta',12, 10, 1,'Amapola');

@@ -9,9 +9,10 @@ import dao.UsuarioDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import modelo.Sala;
 import modelo.Usuario;
 import vista.LoginForm;
-import vista.Menu;
+import vista.RegistrarSala;
 
 public class ControladorUsuario implements ActionListener{
   public LoginForm vista;
@@ -59,15 +60,19 @@ public class ControladorUsuario implements ActionListener{
     if(vista.logInDatosCorrectos() == true){
       String nombreUsuario = vista.txtNombreUsuario.getText();
       String contraseña = vista.txtContraseña.getText();
-      System.out.println("Bienvenido: "+ nombreUsuario);
     
       modelo = new Usuario(nombreUsuario,contraseña);
       Usuario usuarioActual = dao.iniciarSesion(modelo);
 
       if(usuarioActual != null){
+        JOptionPane.showMessageDialog(vista, "Bienvenido: "+ nombreUsuario);
         vista.setVisible(false);
-        Menu menu = new Menu();
-        menu.setVisible(true);
+        RegistrarSala vista = new RegistrarSala();
+        Sala modelo = new Sala();
+        
+        ControladorSala controladorSala = new ControladorSala(vista,modelo);
+        controladorSala.vista.setVisible(true);
+        controladorSala.vista.setLocationRelativeTo(null);
         
       }else{
         JOptionPane.showMessageDialog(vista, "El usuario indicado no existe");
