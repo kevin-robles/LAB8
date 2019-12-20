@@ -4,7 +4,7 @@ create database LABMVC;
 
 create table esquema.usuario(
   nombre varchar(100) primary key,
-  contraseña varchar(100)
+  contraseï¿½a varchar(100)
 )
 
 create table esquema.sala(
@@ -18,12 +18,12 @@ create table esquema.sala(
 
 insert into esquema.usuario values ('Kevin','123');
 
-create function esquema.validarUsuario(@nombre as varchar(100), @contraseña as varchar(100))
+create function esquema.validarUsuario(@nombre as varchar(100), @contraseï¿½a as varchar(100))
 returns int
 as 
 begin
   declare @usuario as varchar(50);
-  set @usuario = (select nombre from esquema.usuario where nombre = @nombre and contraseña = @contraseña);
+  set @usuario = (select nombre from esquema.usuario where nombre = @nombre and contraseï¿½a = @contraseï¿½a);
   if @usuario != ''
   begin 
     return 1;
@@ -47,3 +47,4 @@ end
 execute esquema.ingresarSala @identificador = '?', @ubicacion = '?',@capacidad = '?',@area = '?',@nombre = '?', @wifi = '?';
 
 insert into esquema.sala values('01','Edificio Mira, segunda planta',12, 10, 1,'Amapola');
+select * from esquema.sala
