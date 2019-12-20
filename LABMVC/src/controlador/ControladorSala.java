@@ -45,6 +45,9 @@ public class ControladorSala implements ActionListener{
     }
   }
   
+    /**
+   * Metodo para registrar una sala
+   */
   public void registrarSala(){
     if(vista.datosCorrectos() == true){
       int capacidad = Integer.parseInt(vista.txtCapacidad.getText());
@@ -53,7 +56,7 @@ public class ControladorSala implements ActionListener{
       String ubicacion = vista.txtCapacidad.getText();
       String identificador = vista.txtId.getText();
       boolean hayWifi = vista.checkWifi.isSelected();
-      
+      System.out.println(hayWifi);
       Sala sala = new Sala(identificador, ubicacion, capacidad, area, nombre, hayWifi);
       Boolean bandera = dao.registrarSala(sala);
       if(bandera == true){
