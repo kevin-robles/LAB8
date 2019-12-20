@@ -66,6 +66,11 @@ public class LoginForm extends javax.swing.JFrame {
         lbContraseña.setText("Contraseña");
 
         btCancelarLogin.setText("Cancelar login");
+        btCancelarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarLoginActionPerformed(evt);
+            }
+        });
 
         btIniciarLogin.setText("Iniciar login");
         btIniciarLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +125,10 @@ public class LoginForm extends javax.swing.JFrame {
     private void btIniciarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btIniciarLoginActionPerformed
+
+    private void btCancelarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -25,7 +25,7 @@ public class ConexionBD {
     }
     try{
       String  url = "jdbc:sqlserver://localhost:1433;databaseName=LABMVC";
-      contacto = DriverManager.getConnection(url,"sa","123");
+      contacto = DriverManager.getConnection(url,"sa","sa");
     }
     catch(SQLException e){
       System.out.println(e);

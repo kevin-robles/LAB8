@@ -24,7 +24,7 @@ public class UsuarioDAO {
     try{
       String nombreUsuario = usuario.getNombre();
       String contraseña = usuario.getContraseña();
-      Connection conexion = ConexionBD.getConexion();
+      Connection conexion = ConexionBD.getConexion(); 
       PreparedStatement consulta = conexion.prepareStatement("select esquema.validarUsuario(?,?)");
       consulta.setString(1, nombreUsuario);
       consulta.setString(2,contraseña);

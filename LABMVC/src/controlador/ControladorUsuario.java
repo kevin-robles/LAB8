@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.LoginForm;
+import vista.Menu;
 
 public class ControladorUsuario implements ActionListener{
   public LoginForm vista;
@@ -27,6 +28,7 @@ public class ControladorUsuario implements ActionListener{
     vista = pVista;
     modelo = pModelo;
     dao = new UsuarioDAO(); //Encargado de administrar la base de datos
+    
     
     this.vista.btIniciarLogin.addActionListener(this);
     this.vista.btCancelarLogin.addActionListener(this);
@@ -57,14 +59,16 @@ public class ControladorUsuario implements ActionListener{
     if(vista.logInDatosCorrectos() == true){
       String nombreUsuario = vista.txtNombreUsuario.getText();
       String contraseña = vista.txtContraseña.getText();
+      System.out.println("Bienvenido: "+ nombreUsuario);
     
       modelo = new Usuario(nombreUsuario,contraseña);
       Usuario usuarioActual = dao.iniciarSesion(modelo);
-    
+
       if(usuarioActual != null){
-        vista.setVisible(true);
-        JOptionPane.showMessageDialog(vista,"Bienvenido: "+usuarioActual.getNombre());
-        vista.setVisible(true);
+        vista.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        
       }else{
         JOptionPane.showMessageDialog(vista, "El usuario indicado no existe");
       }
